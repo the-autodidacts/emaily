@@ -3,7 +3,7 @@ const app = express();
 
 
 app.get('/', (req, res) => {
-  res.send({hi: 'there', request: req.headers})
+  res.send({hi: 'there', request: req.url})
 });
 
 
