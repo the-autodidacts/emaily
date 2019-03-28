@@ -5,6 +5,22 @@ const mongoose = require("mongoose");
 
 //The User object is our Model Class we can create a new model instance and save it to the db
 const User = mongoose.model("users");
+          
+
+//Generate a token and give to the user by defining a function called serializeUser
+//Done is a call back that we have to call first argument is error second arg is identifying 
+//piece of info. This id is the mongo object id.
+passport.serializeUser((user, done)=> {
+  done(null, user.id)
+});
+
+//id is the id from the serializeUser user.id it is now used to deserialize the user. 
+passport.deserializeUser((id, done) => {
+  User.findById(id)
+    .then(user => {
+      done(null, user)
+    });
+});
 
 passport.use(
   new GoogleStrategy(
@@ -25,6 +41,7 @@ passport.use(
         //user with googleId === profile.id it is a null value it is a mongoose record instance
 
         if (existingUser) {
+
           //first argument is the error so we pass null second argument is the user record
           done(null, existingUser);
         } else {
