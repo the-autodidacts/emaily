@@ -1,11 +1,14 @@
-const express = require('express');
+
+const express = require('express')
+const mongoose = require('mongoose')
+const keys = require('./config/keys')
+
+require('./services/passport')
+
 const app = express();
+mongoose.connect(keys.mongoURI, { useNewUrlParser: true })
+require("./routes/authRoutes")(app)
 
+const port = process.env.PORT || "5000"
 
-app.get('/', (req, res) => {
-  res.send({hi: 'there', request: req.url})
-});
-
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT);
+app.listen(port, console.log("listening on: ", port))
