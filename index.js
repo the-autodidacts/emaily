@@ -5,7 +5,7 @@ const cookieSession = require('cookie-session')
 const passport = require('passport')
 const keys = require('./config/keys')
 
-//Make sure you require the /model/users before /services/passport 
+//Make sure you require the /models/User before /services/passport 
 require('./models/User')
 require('./services/passport')
 
