@@ -35,5 +35,5 @@ require("./routes/authRoutes")(app)
 
 
 //start listening on specified port
-const port = process.env.PORT || "5000"
-app.listen(port, console.log("listening on: ", port))
+const PORT = process.env.PORT || "5000"
+app.listen(PORT, console.log("listening on: ", PORT))
