@@ -23,13 +23,14 @@ app.use(
     })
 )
 
-//Now tell passport to use cookies to handle authentication
+//Now tell passport to use cookies to handle authentication 
 app.use(passport.initialize());
 app.use(passport.session());
 
 
 // second arg to remove deprecation warning.
 mongoose.connect(keys.mongoURI, { useNewUrlParser: true })
+//must be down here since we are passing the app object we need to make sure that we use the above middlewares before sending it out authRoutes.
 require("./routes/authRoutes")(app)
 
 
