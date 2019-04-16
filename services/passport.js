@@ -35,6 +35,7 @@ passport.use(
     //.save() saves it to the db.
 
     async (accessToken, refreshToken, profile, done) => {
+      const existingUser = await User.findOne({googleId: profile.id})
       if (existingUser) {
         return done(null, existingUser);
       } 
