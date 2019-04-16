@@ -18,7 +18,7 @@ import reducers from './reducers';
 import App from './components/App'
 
 // The first argument to createStore is a reducer the second argument is the initial state of the app
-const store = createStore(reducers, {}, applyMiddleware(reduxThunk))
+const store = createStore(reducers, {}, applyMiddleware(reduxThunk ))
 
 // Starts the rendering process takes an App component since we are using Redux 
 // We must wrap that component in a provider second argument is the root of document 
