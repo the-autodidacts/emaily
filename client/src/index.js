@@ -8,6 +8,7 @@ import ReactDom from 'react-dom';
 // Start setup of Redux
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux'; // applyMiddleware will help with Thunk
+import reduxThunk from 'redux-thunk'
 
 
 //import reducers
@@ -17,7 +18,7 @@ import reducers from './reducers';
 import App from './components/App'
 
 // The first argument to createStore is a reducer the second argument is the initial state of the app
-const store = createStore(reducers, {}, applyMiddleware())
+const store = createStore(reducers, {}, applyMiddleware(reduxThunk))
 
 // Starts the rendering process takes an App component since we are using Redux 
 // We must wrap that component in a provider second argument is the root of document 
