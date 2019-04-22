@@ -26,5 +26,6 @@ module.exports = (app) => {
   // user is automagically attached to the req object by passport. I love you passport.
   app.get('/api/current_user', (req, res)=> {
     res.send(req.user)
+    console.log(req.user)
   })
 };

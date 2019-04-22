@@ -24,6 +24,7 @@ app.use(
 )
 
 //Now tell passport to use cookies to handle authentication 
+//Missing this middleware will give us an undefined req.user object
 app.use(passport.initialize());
 app.use(passport.session());
 
