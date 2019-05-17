@@ -30,9 +30,20 @@ app.use(passport.session());
 
 
 // second arg to remove deprecation warning.
-mongoose.connect(keys.mongoURI, { useNewUrlParser: true })
+// mongoose.connect(keys.mongoURI, { useNewUrlParser: true })
+mongoose.connect(keys.mongoURI, { useNewUrlParser: true }, function(err, db) {
+  if (err) {
+    console.log(
+      "Unable to connect to the server. Please start the server. Error:",
+      err
+    );
+  } else {
+    console.log("Connected to Server successfully!");
+  }
+});
 //must be down here since we are passing the app object we need to make sure that we use the above middlewares before sending it out authRoutes.
 require("./routes/authRoutes")(app)
+require("./routes/billingRoutes")(app)
 
 
 //start listening on specified port
