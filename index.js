@@ -3,6 +3,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cookieSession = require('cookie-session')
 const passport = require('passport')
+const bodyParser = require("body-parser");
 const keys = require('./config/keys')
 
 //Make sure you require the /models/User before /services/passport 
@@ -22,6 +23,8 @@ app.use(
         keys: [keys.cookieKey]
     })
 )
+//uses bodyParser middleware
+app.use(bodyParser.json())
 
 //Now tell passport to use cookies to handle authentication 
 //Missing this middleware will give us an undefined req.user object
@@ -42,8 +45,8 @@ mongoose.connect(keys.mongoURI, { useNewUrlParser: true }, function(err, db) {
   }
 });
 //must be down here since we are passing the app object we need to make sure that we use the above middlewares before sending it out authRoutes.
-require("./routes/authRoutes")(app)
-require("./routes/billingRoutes")(app)
+require("./routes/authRoutes")(app);
+require("./routes/billingRoutes")(app);
 
 
 //start listening on specified port
