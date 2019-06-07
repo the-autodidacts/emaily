@@ -12,19 +12,20 @@ pipeline {
     }
     
     stages {
-        stage('build') {
+        stage('build & deploy to 3000') {
             steps {
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL} trying npm install"
                 sh 'npm install'
+                sh 'npm start'
                 
             }
         }
 
-        stage('deliver'){
-            steps {
-                sh 'chmod +x ./jenkins/deliver.sh'
-                sh './jenkins/deliver.sh'
-            }
-        }
+        // stage('deliver'){
+        //     steps {
+        //         sh 'chmod +x ./jenkins/deliver.sh'
+        //         sh './jenkins/deliver.sh'
+        //     }
+        // }
     }
 }
