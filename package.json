@@ -8,10 +8,11 @@
     "npm": "5.0.3"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "node run build-client && PORT=3000 node server",
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build-client": "cd client && npm run build && cd .."
   },
   "author": "Yoan Ante",
   "license": "ISC",
