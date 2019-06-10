@@ -16,6 +16,7 @@ pipeline {
             steps {
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL} trying npm install"
                 sh 'npm install'
+                sh 'npm install -g serve'
                 // sh 'cd client && npm install && cd ..'
                 sh 'npm start'
                 
