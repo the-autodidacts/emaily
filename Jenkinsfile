@@ -18,7 +18,7 @@ pipeline {
                 sh 'npm install'
                 sh 'npm install serve'
                 // sh 'cd client && npm install && cd ..'
-                sh 'npm start'
+                sh 'npm start & '
                 
             }
         }
